@@ -51,6 +51,7 @@ public class StartingPointManager : MonoBehaviour
             if(transposer.m_FollowOffset.y <= 65.2f)
             {
                 goToStartLocation = false;
+                // we are on that location in space
             }
         }
     }
