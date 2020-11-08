@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Common;
 
 public class StartingPoint : MonoBehaviour
 {
@@ -19,8 +20,11 @@ public class StartingPoint : MonoBehaviour
         initial_point.position = selectedStartPoint.position;
         // activate sprite for selected location
         selectedStartPoint.GetComponentInChildren<SpriteRenderer>().enabled = true;
-        // enable GO button
-        StartingPointManager.Instance.GObtn.interactable = true;
+        // set color of the marked sprite renderer
+        //// enable GO button -> in EndPoint
+        //StartingPointManager.Instance.GObtn.interactable = true;
+        StartingPointManager.Instance.SET_SEARCH_FIELD_TEXT(Consts.Input_Field_Search_Text_End);
+        StartingPointManager.Instance.hasStartPointSelected = true;
     }
 
     private void CloseSearchPanel()

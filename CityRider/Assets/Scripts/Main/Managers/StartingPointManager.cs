@@ -28,9 +28,16 @@ public class StartingPointManager : MonoBehaviour
     private bool goToStartLocation;
     private CinemachineTransposer transposer;
 
+    public bool hasStartPointSelected;
+    public bool hasEndPointSelected;
+
+    public InputField search_input_field;
+
     void Awake()
     {
         instance = this;
+        hasStartPointSelected = false;
+        hasEndPointSelected = false;
     }
 
     void Start()
@@ -74,10 +81,16 @@ public class StartingPointManager : MonoBehaviour
         return null;
     }
 
+    // called on button event handler
     public void GO_START()
     { // TO:DO we need an end location first then activate GO.. but for the time being
         GObtn.interactable = false; // do something with the button (example: change it to Menu Btn idk)
         goToStartLocation = true;
         
+    }
+
+    public void SET_SEARCH_FIELD_TEXT(string txt)
+    {
+        search_input_field.placeholder.GetComponent<Text>().text = txt;
     }
 }

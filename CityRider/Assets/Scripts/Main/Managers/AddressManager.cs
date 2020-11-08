@@ -23,7 +23,9 @@ public class AddressManager : MonoBehaviour
     #endregion
 
     string[,] TypeAddressCityCountry;
-    public GameObject location_template;
+    public GameObject location_template_start;
+    public GameObject location_template_end;
+
     public GameObject location_content;
     public Text loadStatusText;
 
@@ -43,7 +45,7 @@ public class AddressManager : MonoBehaviour
         loadStatusText.text = "0%";
     }
 
-    public IEnumerator LoadRecentAddressItems()
+    public IEnumerator LoadRecentAddressItems(bool hasStartingPoint)
     {
         while (x < Consts.defaultDisplayNum)
         {
@@ -59,7 +61,7 @@ public class AddressManager : MonoBehaviour
 
             print("<color=green>Loading: </color>" + type + ", " + address + ", " + city + ", " + country);
             // create new item and set data
-            GameObject newLocationItem = Instantiate(location_template);
+            GameObject newLocationItem = hasStartingPoint ? Instantiate(location_template_start) : Instantiate(location_template_end);
             newLocationItem.transform.Find("location_sprite").GetComponent<Image>().sprite = type_icon;
             newLocationItem.transform.Find("location_text").GetComponent<Text>().text = address + ", " + city;
             // move parent object and resize to fit
@@ -80,7 +82,7 @@ public class AddressManager : MonoBehaviour
         loadStatusText.text = "100%";
     }
 
-    public IEnumerator LoadFavouriteAddressItems()
+    public IEnumerator LoadFavouriteAddressItems(bool hasStartingPoint)
     {
         while (y < Consts.favouriteDisplayNum)
         {
@@ -96,7 +98,7 @@ public class AddressManager : MonoBehaviour
 
             print("<color=green>Loading: </color>" + type + ", " + address + ", " + city + ", " + country);
             // create new item and set data
-            GameObject newLocationItem = Instantiate(location_template);
+            GameObject newLocationItem = hasStartingPoint ? Instantiate(location_template_start) : Instantiate(location_template_end);
             newLocationItem.transform.Find("location_sprite").GetComponent<Image>().sprite = type_icon;
             newLocationItem.transform.Find("location_text").GetComponent<Text>().text = address + ", " + city;
             // move parent object and resize to fit
@@ -117,7 +119,7 @@ public class AddressManager : MonoBehaviour
         loadStatusText.text = "100%";
     }
 
-    public IEnumerator LoadStationAddressItems()
+    public IEnumerator LoadStationAddressItems(bool hasStartingPoint)
     {
         while (z < Consts.stationsDisplayNum)
         {
@@ -133,7 +135,7 @@ public class AddressManager : MonoBehaviour
 
             print("<color=green>Loading: </color>" + type + ", " + address + ", " + city + ", " + country);
             // create new item and set data
-            GameObject newLocationItem = Instantiate(location_template);
+            GameObject newLocationItem = hasStartingPoint ? Instantiate(location_template_start) : Instantiate(location_template_end);
             newLocationItem.transform.Find("location_sprite").GetComponent<Image>().sprite = type_icon;
             newLocationItem.transform.Find("location_text").GetComponent<Text>().text = address + ", " + city;
             // move parent object and resize to fit
@@ -154,7 +156,7 @@ public class AddressManager : MonoBehaviour
         loadStatusText.text = "100%";
     }
 
-    public IEnumerator LoadBlackListAddressItems()
+    public IEnumerator LoadBlackListAddressItems(bool hasStartingPoint)
     {
         while (q < Consts.blackListDisplayNum)
         {
@@ -170,7 +172,7 @@ public class AddressManager : MonoBehaviour
 
             print("<color=green>Loading: </color>" + type + ", " + address + ", " + city + ", " + country);
             // create new item and set data
-            GameObject newLocationItem = Instantiate(location_template);
+            GameObject newLocationItem = hasStartingPoint ? Instantiate(location_template_start) : Instantiate(location_template_end);
             newLocationItem.transform.Find("location_sprite").GetComponent<Image>().sprite = type_icon;
             newLocationItem.transform.Find("location_text").GetComponent<Text>().text = address + ", " + city;
             // move parent object and resize to fit

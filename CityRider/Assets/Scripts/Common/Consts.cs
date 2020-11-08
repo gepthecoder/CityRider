@@ -17,8 +17,11 @@
         public const int favouriteDisplayNum = 4;
         public const int stationsDisplayNum = 2;
         public const int blackListDisplayNum = 1;
+        ////////////////////////////////////////////////////////////////////////////////////
 
-
+        //UI ELEMENTS
+        public const string Input_Field_Search_Text_Start = "Select starting point";
+        public const string Input_Field_Search_Text_End = "Select your destination";
     }
 }
 

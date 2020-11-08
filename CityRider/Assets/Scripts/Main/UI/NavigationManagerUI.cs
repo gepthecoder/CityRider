@@ -26,7 +26,7 @@ public class NavigationManagerUI : MonoBehaviour
     [Header("DROP MENU BTNS")]
     [Space(5)]
     [SerializeField]
-    private Button dropMenuBtn;
+    public Button dropMenuBtn;
     private Image dropMenuBtnImage;
     private float dropImageTime = 1f;
     private Animator switch_image_drop_menuAnime;
@@ -47,6 +47,7 @@ public class NavigationManagerUI : MonoBehaviour
     [Header("DROP DOWN/UP ANIME")]
     [SerializeField]
     private Animator dropDownAnime;
+
 
     private AddressManager addressManager;
 
@@ -216,7 +217,8 @@ public class NavigationManagerUI : MonoBehaviour
     #region POPULATE CONTENT - NAVIGATION
     private void PopulateContentWithRecentAddresses()
     {
-        StartCoroutine(addressManager.LoadRecentAddressItems());
+        bool hasStartPoint = !StartingPointManager.Instance.hasStartPointSelected;
+        StartCoroutine(addressManager.LoadRecentAddressItems(hasStartPoint));
     }
     private void PopulateContentWithRecentAddresses(bool clear)
     {    //overload
@@ -230,7 +232,8 @@ public class NavigationManagerUI : MonoBehaviour
 
     private void PopulateContentWithFavouriteAddresses()
     {
-        StartCoroutine(addressManager.LoadFavouriteAddressItems());
+        bool hasStartPoint = !StartingPointManager.Instance.hasStartPointSelected;
+        StartCoroutine(addressManager.LoadFavouriteAddressItems(hasStartPoint));
     }
     private void PopulateContentWithFavouriteAddresses(bool clear)
     {    //overload
@@ -244,7 +247,8 @@ public class NavigationManagerUI : MonoBehaviour
 
     private void PopulateContentWithStationAddresses()
     {
-        StartCoroutine(addressManager.LoadStationAddressItems());
+        bool hasStartPoint = !StartingPointManager.Instance.hasStartPointSelected;
+        StartCoroutine(addressManager.LoadStationAddressItems(hasStartPoint));
     }
     private void PopulateContentWithStationAddresses(bool clear)
     {    //overload
@@ -258,7 +262,8 @@ public class NavigationManagerUI : MonoBehaviour
 
     private void PopulateContentWithBlackListAddresses()
     {
-        StartCoroutine(addressManager.LoadBlackListAddressItems());
+        bool hasStartPoint = !StartingPointManager.Instance.hasStartPointSelected;
+        StartCoroutine(addressManager.LoadBlackListAddressItems(hasStartPoint));
     }
     private void PopulateContentWithBlackListAddresses(bool clear)
     {    //overload
